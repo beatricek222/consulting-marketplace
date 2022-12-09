@@ -20,14 +20,28 @@
          
   <div>
     <label for="time_id_box">Time</label>
-      
+
+    <select name="query_time_id" id="time_id_box">
+      <%TimeAvailability.all.each do |time|%>
+      <option value="<%=time.id%>"><%=time.description%></option>
+      <%end%>
+    </select>
+    <!--
     <input type="text" id="time_id_box" name="query_time_id">
+    -->
   </div>
          
   <div>
     <label for="role_id_box">Role</label>
-      
+    
+    <select name="query_role_id" id="role_id_box">
+      <%Role.all.each do |role|%>
+      <option value="<%=role.id%>"><%=role.title%></option>
+      <%end%>
+    </select>
+    <!--
     <input type="text" id="role_id_box" name="query_role_id">
+    -->
   </div>
          
   <div>

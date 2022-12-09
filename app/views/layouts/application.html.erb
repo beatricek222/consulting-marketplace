@@ -16,6 +16,36 @@
   </head>
 
   <body>
+      <ul>
+      <li>
+        <a href="/marketplace">All Businesses</a>
+      </li>
+
+      <%if session[:user_id] == nil %>
+      <li>
+        <a href="/user_sign_up">Sign up</a>
+      </li>
+      <li>
+        <a href="/user_sign_in">Sign in</a>
+      </li> 
+      <%else%>
+      <li>
+        <a href="/favorites">Favorites</a>
+      </li>
+      <li>
+        <a href="/contacteds">Contacted</a>
+      </li> 
+      <li>
+        <a href="/profile">My Profile</a>
+      </li>
+      <li>
+        <a href="/user_sign_out">Sign out</a>
+      </li>
+      <%end%>
+    </ul>
+
+    <p style="color: green"> <%=notice %></p>
+    <p style="color: red"> <%=alert %></p>
     <%= yield %>
   </body>
 </html>
