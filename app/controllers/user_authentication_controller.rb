@@ -64,13 +64,18 @@ class UserAuthenticationController < ApplicationController
 
     save_status = @user.save
 
-    interests = params.fetch(["query_interest_id"])
-    interests.each do |expertise|
-      @interest = UserInterest.new
-      @interest.expertise_id = expertise
-      @interest.user_id = @user.id
-      @interest.save
-    end
+    @interest = UserInterest.new
+    @interest.expertise_id = params.fetch("query_interest_id")
+    @interest.user_id = @user.id
+    @interest.save
+
+    #interests = params.fetch("query_interest_id")
+    #interests.each do |expertise|
+    #  @interest = UserInterest.new
+    #  @interest.expertise_id = expertise
+    #  @interest.user_id = @user.id
+    #  @interest.save
+    # end
 
     if save_status == true
       session[:user_id] = @user.id

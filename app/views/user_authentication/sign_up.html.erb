@@ -69,7 +69,7 @@
   <div>
     <label for="user_interests_id_box">Focus Areas</label>
 
-    <select name="query_interest_id[]" id="user_interests_id_box" multiple="multiple">
+    <select name="query_interest_id" id="user_interests_id_box"> <!-- multiple="multiple" -->
       <%Expertise.all.each do |expertise|%>
       <option value="<%=expertise.id%>"><%=expertise.name%></option>
       <%end%>
