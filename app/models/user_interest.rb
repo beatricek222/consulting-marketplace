@@ -9,4 +9,6 @@
 #  user_id      :integer
 #
 class UserInterest < ApplicationRecord
+  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
+  belongs_to(:expertise, { :required => true, :class_name => "Expertise", :foreign_key => "expertise_id" })
 end
