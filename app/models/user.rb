@@ -18,4 +18,6 @@ class User < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true
   has_secure_password
+
+  belongs_to(:role, { :required => true, :class_name => "Role", :foreign_key => "role_id" })
 end
