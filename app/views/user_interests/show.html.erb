@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      User interest #<%= @the_user_interest.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/user_interests">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_user_interest/<%= @the_user_interest.id %>">
+          Delete user interest
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Expertise
+      </dt>
+      <dd>
+        <%= @the_user_interest.expertise_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_user_interest.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_interest.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_interest.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit user interest
+    </h2>
+
+    <form action="/modify_user_interest/<%= @the_user_interest.id %>"  method="post" >
+      <div>
+        <label for="expertise_id_box">
+          Expertise
+        </label>
+
+        <input type="text" id="expertise_id_box" name="query_expertise_id" value="<%= @the_user_interest.expertise_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_user_interest.user_id %>">
+      </div>
+
+      <button>
+        Update user interest
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

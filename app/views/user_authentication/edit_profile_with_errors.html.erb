@@ -1,0 +1,80 @@
+<div >
+  <h5>
+    Edit User Account
+  </h5>
+
+  <% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+  <% end %>
+  <div>
+    <form action="/modify_user" method="post">
+              
+      <div>
+        <label for="email_box">Email</label>
+          
+        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
+          
+      </div>
+                                    
+      <div>
+        <label for="username_box">Username</label>
+          
+        <input id="username_box" name="query_username" value="<%= @current_user.username %>">
+          
+      </div>
+                      
+      <div>
+        <label for="description_box">Description</label>
+          
+        <textarea id="description_box" name="query_description" rows="3"><%= @current_user.description %></textarea> 
+          
+      </div>
+                      
+      <div>
+        <label for="time_id_box">Time</label>
+          
+        <input id="time_id_box" name="query_time_id" value="<%= @current_user.time_id %>">
+          
+      </div>
+                      
+      <div>
+        <label for="role_id_box">Role</label>
+          
+        <input id="role_id_box" name="query_role_id" value="<%= @current_user.role_id %>">
+          
+      </div>
+                      
+      <div>
+        <label for="company_name_box">Company name</label>
+          
+        <input id="company_name_box" name="query_company_name" value="<%= @current_user.company_name %>">
+          
+      </div>
+                      
+      <div>
+        <label for="full_name_box">Full name</label>
+          
+        <input id="full_name_box" name="query_full_name" value="<%= @current_user.full_name %>">
+          
+      </div>
+              
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a new password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your new password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Expertise #<%= @the_expertise.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/expertises">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_expertise/<%= @the_expertise.id %>">
+          Delete expertise
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_expertise.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_expertise.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_expertise.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit expertise
+    </h2>
+
+    <form action="/modify_expertise/<%= @the_expertise.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_expertise.name %>">
+      </div>
+
+      <button>
+        Update expertise
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

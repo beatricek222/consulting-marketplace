@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all user interests
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new user interest
+    </h2>
+
+    <form action="/insert_user_interest" method="post">
+      <div>
+        <label for="expertise_id_box">
+          Expertise
+        </label>
+
+        <input type="text" id="expertise_id_box" name="query_expertise_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create user interest
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Expertise
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_user_interests.each do |a_user_interest| %>
+      <tr>
+        <td>
+          <%= a_user_interest.id %>
+        </td>
+
+        <td>
+          <%= a_user_interest.expertise_id %>
+        </td>
+
+        <td>
+          <%= a_user_interest.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_user_interest.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_user_interest.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/user_interests/<%= a_user_interest.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

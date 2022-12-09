@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Role #<%= @the_role.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/roles">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_role/<%= @the_role.id %>">
+          Delete role
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_role.title %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_role.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_role.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit role
+    </h2>
+
+    <form action="/modify_role/<%= @the_role.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_role.title %>">
+      </div>
+
+      <button>
+        Update role
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

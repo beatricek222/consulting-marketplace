@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Time availability #<%= @the_time_availability.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/time_availabilities">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_time_availability/<%= @the_time_availability.id %>">
+          Delete time availability
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_time_availability.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_time_availability.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_time_availability.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit time availability
+    </h2>
+
+    <form action="/modify_time_availability/<%= @the_time_availability.id %>"  method="post" >
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_time_availability.description %>">
+      </div>
+
+      <button>
+        Update time availability
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

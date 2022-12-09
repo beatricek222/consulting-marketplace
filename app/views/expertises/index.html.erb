@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      List of all expertises
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new expertise
+    </h2>
+
+    <form action="/insert_expertise" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <button>
+        Create expertise
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_expertises.each do |an_expertise| %>
+      <tr>
+        <td>
+          <%= an_expertise.id %>
+        </td>
+
+        <td>
+          <%= an_expertise.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_expertise.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_expertise.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/expertises/<%= an_expertise.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
