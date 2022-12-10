@@ -9,5 +9,5 @@
 #  user_id       :integer
 #
 class Contacted < ApplicationRecord
-  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
+  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "other_user_id" })
 end
