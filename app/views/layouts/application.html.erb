@@ -13,9 +13,60 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
   </head>
 
   <body>
+  <div class="container py-3">
+<nav class="navbar navbar-expand-xl navbar-light" style="background-color: #e3f2fd; border-radius: 30px; text-align: center; justify-content: space-around;">
+  <div class="container-fluid" style="text-align: center; justify-content: space-around;">
+    <!-- <a class="navbar-brand" style="text-align: center;" href="/marketplace">All Businesses</a> -->
+    <!-- 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight" aria-controls="navbarLight" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    -->
+    <div class="collapse navbar-collapse" id="navbarLight" style="text-align: center;">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/marketplace">All Businesses</a>
+        </li>
+      <%if session[:user_id] == nil %>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user_sign_up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user_sign_in">Sign In</a>
+        </li>
+        <%else%>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/favorites">Favorites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/contacteds">Contacted</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/profile">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user_sign_out">Sign Out</a>
+        </li>
+        <%end%>
+      </ul>
+      <!-- 
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+      -->
+    </div>
+  </div>
+</nav>
+
+<!--
       <ul>
       <li>
         <a href="/marketplace">All Businesses</a>
@@ -43,7 +94,7 @@
       </li>
       <%end%>
     </ul>
-
+-->
     <p style="color: green"> <%=notice %></p>
     <p style="color: red"> <%=alert %></p>
     <%= yield %>
