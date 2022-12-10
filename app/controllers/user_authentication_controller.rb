@@ -16,6 +16,45 @@ class UserAuthenticationController < ApplicationController
     render({ :template => "user_authentication/show.html.erb" })
   end
 
+  def profile
+    # @user = @current_user
+    # if params["query_email"] != nil
+    #   @user.email = params.fetch("query_email")
+    # end
+    # if params["query_password"] != nil
+    #   @user.password = params.fetch("query_password")
+    # end
+    # if params["query_password_confirmation"] != nil
+    #   @user.password_confirmation = params.fetch("query_password_confirmation")
+    # end
+    # if params["query_username"] != nil
+    #   @user.username = params.fetch("query_username")
+    # end
+    # if params["query_description"] != nil
+    #   @user.description = params.fetch("query_description")
+    # end
+    # if params["query_time_id"] != nil
+    #   @user.time_id = params.fetch("query_time_id")
+    # end
+    # if params["query_role_id"] != nil
+    #   @user.role_id = params.fetch("query_role_id")
+    # end
+    # if params["query_company_name"] != nil
+    #   @user.company_name = params.fetch("query_company_name")
+    # end
+    # if params["query_full_name"] != nil
+    #   @user.full_name = params.fetch("query_full_name")
+    # end
+
+    # if @user.valid?
+    #   @user.save
+
+    render({ :template => "user_authentication/profile.html.erb" })
+    # else
+    #   render({ :template => "user_authentication/edit_profile_with_errors.html.erb", :alert => @user.errors.full_messages.to_sentence })
+    # end
+  end
+
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
   end
@@ -92,23 +131,78 @@ class UserAuthenticationController < ApplicationController
 
   def update
     @user = @current_user
-    @user.email = params.fetch("query_email")
-    @user.password = params.fetch("query_password")
-    @user.password_confirmation = params.fetch("query_password_confirmation")
-    @user.username = params.fetch("query_username")
-    @user.description = params.fetch("query_description")
-    @user.time_id = params.fetch("query_time_id")
-    @user.role_id = params.fetch("query_role_id")
-    @user.company_name = params.fetch("query_company_name")
-    @user.full_name = params.fetch("query_full_name")
-
-    if @user.valid?
-      @user.save
-
-      redirect_to("/", { :notice => "User account updated successfully." })
+    if params["query_email"] != nil
+      @user.email = params.fetch("query_email")
     else
-      render({ :template => "user_authentication/edit_profile_with_errors.html.erb", :alert => @user.errors.full_messages.to_sentence })
+      @user.email = @user.email
     end
+    if params["query_password"] != nil
+      @user.password = params.fetch("query_password")
+    else
+      @user.password = @user.password
+    end
+    if params["query_password_confirmation"] != nil
+      @user.password_confirmation = params.fetch("query_password_confirmation")
+    else
+      @user.password_confirmation = @user.password_confirmation
+    end
+    if params["query_username"] != nil
+      @user.username = params.fetch("query_username")
+    else
+      @user.username = @user.username
+    end
+    if params["query_description"] != nil
+      @user.description = params.fetch("query_description")
+    else
+      @user.description = @user.description
+    end
+    if params["query_time_id"] != nil
+      @user.time_id = params.fetch("query_time_id")
+    else
+      @user.time_id = @user.time_id
+    end
+    if params["query_role_id"] != nil
+      @user.role_id = params.fetch("query_role_id")
+    else
+      @user.role_id = @user.role_id
+    end
+    if params["query_company_name"] != nil
+      @user.company_name = params.fetch("query_company_name")
+    else
+      @user.company_name = @user.company_name
+    end
+    if params["query_full_name"] != nil
+      @user.full_name = params.fetch("query_full_name")
+    else
+      @user.full_name = @user.full_name
+    end
+
+    #if @user.valid?
+    @user.save
+    #end
+
+    if params["query_interest_id"] != nil
+      @interest = UserInterest.new
+      @interest.expertise_id = params.fetch("query_interest_id")
+      @interest.user_id = @user.id
+      @interest.save
+    end
+
+    #interests = params.fetch("query_interest_id")
+    #interests.each do |expertise|
+    #  @interest = UserInterest.new
+    #  @interest.expertise_id = expertise
+    #  @interest.user_id = @user.id
+    #  @interest.save
+    # end
+
+    # if save_status == true
+    #   session[:user_id] = @user.id
+
+    redirect_to("/profile", { :notice => "Your account was updated successfully." })
+    # else
+    #   render({ :template => "user_authentication/edit_profile_with_errors.html.erb", :alert => @user.errors.full_messages.to_sentence })
+    # end
   end
 
   def destroy

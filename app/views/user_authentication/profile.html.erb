@@ -1,6 +1,65 @@
-<h1>Sign up</h1>
+<div>
+  <div>
+    <h1>
+      <h1><%= @current_user.full_name%></h1>
+    </h1>
 
-<form action="/insert_user" method="post">
+    <div>
+      <div>
+        <a href="/marketplace">
+          Go back
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @current_user.description %>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @current_user.email %>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        Time Availability
+      </dt>
+      <dd>
+        <%= @current_user.time.description %>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        Areas of Expertise
+      </dt>
+      <dd>
+        <% @current_user.user_interests.each do |interest| %>
+          <li> <%=interest.expertise.name%> </li>
+        <%end%>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+<h1>Update Your Profile</h1>
+</div>
+
+<form action="/modify_user" method="post">
 
   <div>
     <label for="full_name_box">Full name</label>
@@ -77,12 +136,6 @@
   </div>
          
   <button>
-    Sign up
+    Update
   </button>
 </form>
-
-<hr>
-
-<p>
-  Or, <a href="/user_sign_in">Sign in</a> instead.
-</p>

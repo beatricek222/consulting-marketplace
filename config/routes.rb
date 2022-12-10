@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get("/", { :controller => "user_authentication", :action => "index" })
   get("/marketplace", { :controller => "user_authentication", :action => "index" })
   get("/marketplace/:path_id", { :controller => "user_authentication", :action => "show" })
+  get("/profile", { :controller => "user_authentication", :action => "profile" })
 
   # Routes for the Contacted resource:
 
