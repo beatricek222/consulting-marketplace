@@ -1,7 +1,109 @@
 <h1>Sign up</h1>
 
-<form action="/insert_user" method="post">
+<br>
 
+<form action="/insert_user" method="post">
+<div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="full_name_box" style="font-weight: bold;">Full name</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
+    <input type="text" class="form-control" id="full_name_box" name="query_full_name">
+  </div>
+  </div>
+
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="email_box" style="font-weight: bold;">Email</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
+    <input id="email_box" class="form-control" name="query_email" type="text">
+  </div>
+  </div>
+
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="password_box" style="font-weight: bold;">Password</label>
+    </div>
+  <div class="col-auto" style="width: 50%">
+    <input id="password_box" class="form-control" name="query_password" type="password">
+  </div>
+  </div>
+
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="password_confirmation_box" style="font-weight: bold;">Password Confirmation</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
+    <input id="password_confirmation_box" class="form-control" name="query_password_confirmation" type="password">
+  </div>
+  </div>
+                 
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="username_box" style="font-weight: bold;">Username</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
+    <input type="text" class="form-control" id="username_box" name="query_username">
+  </div>
+  </div>
+
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="company_name_box" style="font-weight: bold;">Company name</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
+    <input type="text" class="form-control" id="company_name_box" name="query_company_name">
+  </div>
+  </div>
+         
+  <div class="mb-3">
+    <label for="time_id_box" style="font-weight: bold;">Time</label>
+
+    <select name="query_time_id" class="form-select" id="time_id_box">
+      <%TimeAvailability.all.each do |time|%>
+      <option value="<%=time.id%>"><%=time.description%></option>
+      <%end%>
+    </select>
+    <!--
+    <input type="text" id="time_id_box" name="query_time_id">
+    -->
+  </div>
+         
+  <div class="mb-3">
+    <label for="role_id_box" style="font-weight: bold;">Role</label>
+    
+    <select name="query_role_id" class="form-select" id="role_id_box">
+      <%Role.all.each do |role|%>
+      <option value="<%=role.id%>"><%=role.title%></option>
+      <%end%>
+    </select>
+    <!--
+    <input type="text" id="role_id_box" name="query_role_id">
+    -->
+  </div>
+
+  <div class="mb-3">
+    <label for="description_box" style="font-weight: bold;">Description</label>
+    <textarea id="description_box" name="query_description" class="form-control" rows=3></textarea>
+  </div>
+  
+  <div class="mb-3">
+    <label for="user_interests_id_box" style="font-weight: bold;">Area of Expertise</label>
+
+    <select name="query_interest_id" class="form-select" id="user_interests_id_box"> <!-- multiple="multiple" -->
+      <%Expertise.all.each do |expertise|%>
+      <option value="<%=expertise.id%>"><%=expertise.name%></option>
+      <%end%>
+    </select>
+  </div>
+         
+  <button class="btn btn-primary">
+    Update
+  </button>
+
+
+<!-- 
   <div>
     <label for="full_name_box">Full name</label>
       
@@ -43,9 +145,7 @@
       <option value="<%=time.id%>"><%=time.description%></option>
       <%end%>
     </select>
-    <!--
-    <input type="text" id="time_id_box" name="query_time_id">
-    -->
+
   </div>
          
   <div>
@@ -56,9 +156,7 @@
       <option value="<%=role.id%>"><%=role.title%></option>
       <%end%>
     </select>
-    <!--
-    <input type="text" id="role_id_box" name="query_role_id">
-    -->
+
   </div>
 
   <div>
@@ -69,7 +167,7 @@
   <div>
     <label for="user_interests_id_box">Area of Expertise</label>
 
-    <select name="query_interest_id" id="user_interests_id_box"> <!-- multiple="multiple" -->
+    <select name="query_interest_id" id="user_interests_id_box"> 
       <%Expertise.all.each do |expertise|%>
       <option value="<%=expertise.id%>"><%=expertise.name%></option>
       <%end%>
@@ -79,6 +177,7 @@
   <button>
     Sign up
   </button>
+  -->
 </form>
 
 <hr>
