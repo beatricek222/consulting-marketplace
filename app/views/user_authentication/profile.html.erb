@@ -62,36 +62,56 @@
       
 <form action="/modify_user/<%= @current_user.id %>" method="post">
 
-  <div class="mb-3">
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="full_name_box" style="font-weight: bold;">Full name</label>
-      
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input type="text" class="form-control" id="full_name_box" name="query_full_name" value="<%= @current_user.full_name %>">
   </div>
-
-  <div class="mb-3">
+  </div>
+  
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="email_box" style="font-weight: bold;">Email</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input id="email_box" class="form-control" name="query_email" type="text" value="<%= @current_user.email %>">
   </div>
+  </div>
 
-  <div class="mb-3">
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="password_box" style="font-weight: bold;">Password</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input id="password_box" class="form-control" name="query_password" type="password" value="<%= @current_user.password %>">
   </div>
+  </div>
 
-  <div class="mb-3">
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="password_confirmation_box" style="font-weight: bold;">Password Confirmation</label>
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input id="password_confirmation_box" class="form-control" name="query_password_confirmation" hidden_value="<%= @current_user.password_digest %>" type="password">
   </div>
+  </div>
                  
-  <div class="mb-3">
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="username_box" style="font-weight: bold;">Username</label>
-      
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input type="text" class="form-control" id="username_box" name="query_username" value="<%= @current_user.username %>">
   </div>
+  <div>
 
-  <div class="mb-3">
+  <div class="mb-3 row g-3 align-items-center">
+  <div class="col-auto">
     <label for="company_name_box" style="font-weight: bold;">Company name</label>
-      
+  </div>
+  <div class="col-auto" style="width: 50%">
     <input type="text" class="form-control" id="company_name_box" name="query_company_name" value="<%= @current_user.company_name %>">
   </div>
          
