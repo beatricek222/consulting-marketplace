@@ -16,7 +16,8 @@
       </div>
     </div>
 -->
-
+<div class="mb-3 row g-3 align-items-center">
+<div class="col-auto">
     <%if @current_user != nil%>
     <% current_user_favorites = Favorite.where({:other_user_id => @the_user.id, :user_id => session[:user_id]}) %>
 
@@ -28,13 +29,31 @@
     <button class="btn btn-warning">Favorite!</button>
     </form>
     <%else%>
-      <form action="/delete_favorite/<%=the_favorite.id%>" method="post">
-      <input type="hidden" name="query_other_user_id" value="<%=@the_user.id%>">
-       <button class="btn" style="background-color:#ffd557">Un-favorite</button>
+      <form action="/delete_favorite/<%=@the_user.id %>" method="post">
+    <input type="hidden" name="query_other_user_id" value="<%=@the_user.id%>">
+    <button class="btn btn-outline-warning" style="color: #D79334;">Un-favorite</button>
+    </form>
     <%end%>
     <%end%>
+</div>
 
-<br>
+<div class="col-auto">
+        <% current_user_contacteds = Contacted.where({:other_user_id => @the_user.id, :user_id => session[:user_id]}) %>
+
+    <%the_contacted = current_user_contacteds[0]%>
+
+    <%if the_contacted == nil %>
+    <form action="/insert_contacted" method="post">
+    <input type="hidden" name="query_other_user_id" value="<%=@the_user.id%>">
+    <button class="btn btn-info">Contact!</button>
+    </form>
+    <%else%>
+      <div class="btn" style="btn-outline-info">Contacted</div>
+    <%end%>
+</div>
+</div>
+
+<div>
     <dl>
       <dt>
         Description
@@ -64,6 +83,7 @@
       </dd>
     </dl>
   </div>
+</div>
 </div>
 
 <br>
