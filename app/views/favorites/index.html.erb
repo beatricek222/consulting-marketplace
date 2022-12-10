@@ -44,8 +44,9 @@
 
 <div>
   <div>
-    <table border="1">
-      <tr>
+    <table class="table table-hover">
+    <thead>
+      <tr class="table-info">
         <th>
           Name
         </th>
@@ -64,7 +65,8 @@
         <th>
         </th>
       </tr>
-
+      </thead>
+      <tbody>
       <% @list_of_favorites.each do |a_favorite| %>
       <tr>
         <td>
@@ -93,6 +95,7 @@
         </td>
       </tr>
       <% end %>
+      </tbody>
     </table>
   </div>
 </div>
