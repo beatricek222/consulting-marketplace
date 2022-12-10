@@ -55,50 +55,50 @@
         <%end%>
       </dd>
     </dl>
-    
+
       </div>
 
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       
 <form action="/modify_user/<%= @current_user.id %>" method="post">
 
-  <div>
-    <label for="full_name_box">Full name</label>
+  <div class="mb-3">
+    <label for="full_name_box" style="font-weight: bold;">Full name</label>
       
-    <input type="text" id="full_name_box" name="query_full_name" value="<%= @current_user.full_name %>">
+    <input type="text" class="form-control" id="full_name_box" name="query_full_name" value="<%= @current_user.full_name %>">
   </div>
 
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" type="text" value="<%= @current_user.email %>">
+  <div class="mb-3">
+    <label for="email_box" style="font-weight: bold;">Email</label>
+    <input id="email_box" class="form-control" name="query_email" type="text" value="<%= @current_user.email %>">
   </div>
 
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" type="password" value="<%= @current_user.password %>">
+  <div class="mb-3">
+    <label for="password_box" style="font-weight: bold;">Password</label>
+    <input id="password_box" class="form-control" name="query_password" type="password" value="<%= @current_user.password %>">
   </div>
 
-  <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" hidden_value="<%= @current_user.password_digest %>" type="password">
+  <div class="mb-3">
+    <label for="password_confirmation_box" style="font-weight: bold;">Password Confirmation</label>
+    <input id="password_confirmation_box" class="form-control" name="query_password_confirmation" hidden_value="<%= @current_user.password_digest %>" type="password">
   </div>
                  
-  <div>
-    <label for="username_box">Username</label>
+  <div class="mb-3">
+    <label for="username_box" style="font-weight: bold;">Username</label>
       
-    <input type="text" id="username_box" name="query_username" value="<%= @current_user.username %>">
+    <input type="text" class="form-control" id="username_box" name="query_username" value="<%= @current_user.username %>">
   </div>
 
-  <div>
-    <label for="company_name_box">Company name</label>
+  <div class="mb-3">
+    <label for="company_name_box" style="font-weight: bold;">Company name</label>
       
-    <input type="text" id="company_name_box" name="query_company_name" value="<%= @current_user.company_name %>">
+    <input type="text" class="form-control" id="company_name_box" name="query_company_name" value="<%= @current_user.company_name %>">
   </div>
          
-  <div>
-    <label for="time_id_box">Time</label>
+  <div class="mb-3">
+    <label for="time_id_box" style="font-weight: bold;">Time</label>
 
-    <select name="query_time_id" id="time_id_box">
+    <select name="query_time_id" class="form-select" id="time_id_box">
       <%TimeAvailability.all.each do |time|%>
       <option value="<%=time.id%>"><%=time.description%></option>
       <%end%>
@@ -108,10 +108,10 @@
     -->
   </div>
          
-  <div>
-    <label for="role_id_box">Role</label>
+  <div class="mb-3">
+    <label for="role_id_box" style="font-weight: bold;">Role</label>
     
-    <select name="query_role_id" id="role_id_box">
+    <select name="query_role_id" class="form-select" id="role_id_box">
       <%Role.all.each do |role|%>
       <option value="<%=role.id%>"><%=role.title%></option>
       <%end%>
@@ -121,15 +121,15 @@
     -->
   </div>
 
-  <div>
-    <label for="description_box">Description</label>
-    <textarea id="description_box" name="query_description" rows=3><%= @current_user.description %></textarea>
+  <div class="mb-3">
+    <label for="description_box" style="font-weight: bold;">Description</label>
+    <textarea id="description_box" name="query_description" class="form-control" rows=3><%= @current_user.description %></textarea>
   </div>
   
-  <div>
-    <label for="user_interests_id_box">Add an Area of Expertise</label>
+  <div class="mb-3">
+    <label for="user_interests_id_box" style="font-weight: bold;">Add an Area of Expertise</label>
 
-    <select name="query_interest_id" id="user_interests_id_box"> <!-- multiple="multiple" -->
+    <select name="query_interest_id" class="form-select" id="user_interests_id_box"> <!-- multiple="multiple" -->
       <option> </option>
       <%Expertise.all.each do |expertise|%>
       <option value="<%=expertise.id%>"><%=expertise.name%></option>
@@ -137,10 +137,11 @@
     </select>
   </div>
          
-  <button>
+  <button class="btn btn-primary">
     Update
   </button>
 </form>
+<br>
       
       </div>
 
@@ -148,6 +149,7 @@
   </div>
 </div>
 </div>
+<br>
 
 
 <!-- 
