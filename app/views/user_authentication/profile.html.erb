@@ -59,39 +59,39 @@
 <h1>Update Your Profile</h1>
 </div>
 
-<form action="/modify_user" method="post">
+<form action="/modify_user/<%= @current_user.id %>" method="post">
 
   <div>
     <label for="full_name_box">Full name</label>
       
-    <input type="text" id="full_name_box" name="query_full_name">
+    <input type="text" id="full_name_box" name="query_full_name" value="<%= @current_user.full_name %>">
   </div>
 
   <div>
     <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
+    <input id="email_box" name="query_email" type="text" value="<%= @current_user.email %>">
   </div>
 
   <div>
     <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+    <input id="password_box" name="query_password" type="password" value="<%= @current_user.password %>">
   </div>
 
   <div>
     <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+    <input id="password_confirmation_box" name="query_password_confirmation" value="<%= @current_user.password %>" type="password">
   </div>
                  
   <div>
     <label for="username_box">Username</label>
       
-    <input type="text" id="username_box" name="query_username">
+    <input type="text" id="username_box" name="query_username" value="<%= @current_user.username %>">
   </div>
 
   <div>
     <label for="company_name_box">Company name</label>
       
-    <input type="text" id="company_name_box" name="query_company_name">
+    <input type="text" id="company_name_box" name="query_company_name" value="<%= @current_user.company_name %>">
   </div>
          
   <div>
@@ -122,13 +122,14 @@
 
   <div>
     <label for="description_box">Description</label>
-    <textarea id="description_box" name="query_description" rows="3"></textarea>
+    <textarea id="description_box" name="query_description" rows=3><%= @current_user.description %></textarea>
   </div>
   
   <div>
-    <label for="user_interests_id_box">Area of Expertise</label>
+    <label for="user_interests_id_box">Add an Area of Expertise</label>
 
     <select name="query_interest_id" id="user_interests_id_box"> <!-- multiple="multiple" -->
+      <option> </option>
       <%Expertise.all.each do |expertise|%>
       <option value="<%=expertise.id%>"><%=expertise.name%></option>
       <%end%>
