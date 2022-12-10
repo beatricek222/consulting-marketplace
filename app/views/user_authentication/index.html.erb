@@ -5,8 +5,9 @@
 
 <div>
   <div>
-    <table border="1">
-      <tr>
+    <table class="table table-hover" style="border-radius: 30px">
+    <thead>
+      <tr class="table-info">
         <th>
           Name
         </th>
@@ -23,7 +24,8 @@
           Details
         </th>
       </tr>
-
+      </thead>
+      <tbody>
       <% @list_of_users.each do |a_user| %>
       <tr>
         <td>
@@ -44,6 +46,7 @@
         </td>
       </tr>
       <% end %>
+      </tbody>
     </table>
   </div>
 </div>
