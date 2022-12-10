@@ -3,7 +3,11 @@ class UserAuthenticationController < ApplicationController
   skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
 
   def index
-    @list_of_users = User.all
+    if @current_user.role_id == 1
+      @list_of_users = User.where({ :role_id => 2 })
+    else
+      @list_of_users = User.where({ :role_id => 1 })
+    end
     render({ :template => "user_authentication/index.html.erb" })
   end
 
