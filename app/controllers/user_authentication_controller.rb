@@ -185,7 +185,8 @@ class UserAuthenticationController < ApplicationController
     @user.save
     #end
 
-    if params["query_interest_id"] != nil
+    expert = params["query_interest_id"]
+    if ((expert != nil) && (UserInterest.where({ :user_id => @user.id }).where({ :expertise_id => expert })[0] == nil))
       @interest = UserInterest.new
       @interest.expertise_id = params.fetch("query_interest_id")
       @interest.user_id = @user.id
