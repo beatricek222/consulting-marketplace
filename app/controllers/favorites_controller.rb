@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
 
   def create
     the_favorite = Favorite.new
-    the_favorite.user_id = params.fetch("query_user_id")
+    the_favorite.user_id = @current_user.id
     the_favorite.other_user_id = params.fetch("query_other_user_id")
 
     if the_favorite.valid?
@@ -39,7 +39,7 @@ class FavoritesController < ApplicationController
 
     if the_favorite.valid?
       the_favorite.save
-      redirect_to("/favorites/#{the_favorite.id}", { :notice => "Favorite updated successfully."} )
+      redirect_to("/favorites/#{the_favorite.id}", { :notice => "Favorite updated successfully." })
     else
       redirect_to("/favorites/#{the_favorite.id}", { :alert => the_favorite.errors.full_messages.to_sentence })
     end
@@ -47,10 +47,10 @@ class FavoritesController < ApplicationController
 
   def destroy
     the_id = params.fetch("path_id")
-    the_favorite = Favorite.where({ :id => the_id }).at(0)
+    the_favorite = Favorite.where({ :other_user_id => the_id }).where({ :user_id => @current_user.id }).at(0)
 
     the_favorite.destroy
 
-    redirect_to("/favorites", { :notice => "Favorite deleted successfully."} )
+    redirect_to("/favorites", { :notice => "Favorite deleted successfully." })
   end
 end

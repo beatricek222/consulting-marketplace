@@ -1,13 +1,13 @@
 <div>
   <div>
     <h1>
-      List of all favorites
+      List of your favorites
     </h1>
   </div>
 </div>
 
 <hr>
-
+<!--
 <div>
   <div>
     <h2>
@@ -39,28 +39,26 @@
 </div>
 
 <hr>
+
+-->
+
 <div>
   <div>
     <table border="1">
       <tr>
         <th>
-          ID
+          Name
         </th>
 
         <th>
-          User
+          Role
         </th>
 
         <th>
-          Other user
+        Description
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
         </th>
 
         <th>
@@ -70,22 +68,15 @@
       <% @list_of_favorites.each do |a_favorite| %>
       <tr>
         <td>
-          <%= a_favorite.id %>
+          <%=  a_favorite.user.full_name%> <!-- User.where(a_favorite.other_user_id == :id)[0].full_name -->
         </td>
 
         <td>
-          <%= a_favorite.user_id %>
+          <%= a_favorite.user.role.title%>
         </td>
 
         <td>
-          <%= a_favorite.other_user_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_favorite.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_favorite.updated_at) %> ago
+          <%= a_favorite.user.description%>
         </td>
 
         <td>
@@ -93,10 +84,15 @@
             Show details
           </a>
         </td>
+
+        <td>
+    <form action="/delete_favorite/<%=a_favorite.user.id %>" method="post">
+    <input type="hidden" name="query_other_user_id" value="<%=a_favorite.user.id%>">
+    <button>Un-favorite</button>
+    </form>
+        </td>
       </tr>
       <% end %>
     </table>
   </div>
 </div>
-
-<hr>
