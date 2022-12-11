@@ -44,7 +44,7 @@
 
 <div>
   <div>
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
     <thead>
       <tr class="table-info">
         <th>
@@ -88,7 +88,7 @@
         </td>
 
         <td>
-          <a href="/favorites/<%= a_favorite.id %>">
+          <a class="btn btn-outline-success" href="/marketplace/<%= a_favorite.id %>">
             Show details
           </a>
         </td>
@@ -108,10 +108,10 @@
     <%if the_contacted == nil %>
     <form action="/click_contacted" method="post">
     <input type="hidden" name="query_other_user_id" value="<%=a_favorite.user.id%>">
-    <button class="btn btn-info">Contact!</button>
+    <button class="btn btn-info" style="color: black;">Contact!</button>
     </form>
     <%else%>
-      <div class="btn" style="btn-outline-info">Contacted</div>
+      <div class="btn btn-outline-info" style="color: black;">Contacted</div>
     <%end%>
         </td>
       </tr>

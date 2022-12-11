@@ -1,20 +1,24 @@
 
-<h1>
-  List of all users
-</h1>
+<%if @current_user.role_id == 2 %>
+  <h1>List of all consultants</h1>
+<%else %>
+  <h1>List of all businesses</h1>
+<%end%>
 
 <div>
   <div>
-    <table class="table table-hover" style="border-radius: 30px">
+    <table class="table table-hover table-striped" style="border-radius: 30px">
     <thead>
       <tr class="table-info">
         <th>
           Name
         </th>
 
-        <th>
-          Role
-        </th>
+        <%if @current_user.role_id == 2 %>
+  <th>Role</th>
+<%else %>
+  <th>Company Name</th>
+<%end%>
 
         <th>
           Description
@@ -40,15 +44,17 @@
           <%= a_user.full_name %>
         </td>
 
-        <td>
-          <%= a_user.role.title %>
-        </td>
+<%if @current_user.role_id == 2 %>
+  <td><%= a_user.role.title %></td>
+<%else %>
+  <td><%= a_user.company_name %> </td>
+<%end%>
 
         <td>
           <%= a_user.description %>
         </td>
         <td>
-          <a href="/marketplace/<%= a_user.id %>">
+          <a class="btn btn-outline-success" href="/marketplace/<%= a_user.id %>">
             Show details
           </a>
         </td>
@@ -87,7 +93,7 @@
 
 
     <%else%>
-      <div class="btn btn-outline-info">Contacted</div>
+      <div class="btn btn-outline-info" style="color:black;">Contacted</div>
     <%end%>
         </td>
       </tr>
