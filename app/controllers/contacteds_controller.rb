@@ -23,6 +23,8 @@ class ContactedsController < ApplicationController
   end
 
   def create
+    require "mailgun-ruby"
+
     the_contacted = Contacted.new
     the_contacted.user_id = @current_user.id
     the_contacted.other_user_id = params.fetch("query_other_user_id")
@@ -30,6 +32,24 @@ class ContactedsController < ApplicationController
 
     subject = params.fetch("query_subject")
     email_body = params.fetch("query_email")
+
+    # Get your credentials from your Mailgun dashboard, or from Canvas if you're using mine
+    mg_api_key = "your-api-key"
+    mg_sending_domain = "your-sending-domain"
+
+    # Create an instance of the Mailgun Client and authenticate with your API key
+    mg_client = Mailgun::Client.new(mg_api_key)
+
+    # Craft your email as a Hash literal with these four keys
+    email_info = {
+      :from => @current_user.email,
+      :to => other_email,  # Put your own email address here if you want to see it in action
+      :subject => subject,
+      :text => email_body,
+    }
+
+    # Send your email!
+    mg_client.send_message(mg_sending_domain, email_info)
 
     if the_contacted.valid?
       the_contacted.save
