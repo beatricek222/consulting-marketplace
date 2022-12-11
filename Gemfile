@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.3"
 
+gem "mailgun-ruby"
+
 gem "bcrypt"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "http"
@@ -14,7 +16,6 @@ gem "sprockets", "< 4"
 gem "sassc-rails"
 gem "faker"
 
-gem "mailgun-ruby"
 
 group :development do
   gem "htmlbeautifier"

@@ -1,3 +1,5 @@
+require "mailgun-ruby"
+
 class ContactedsController < ApplicationController
   def index
     matching_contacteds = Contacted.where({ :user_id => @current_user.id })
@@ -23,8 +25,6 @@ class ContactedsController < ApplicationController
   end
 
   def create
-    require "mailgun-ruby"
-
     the_contacted = Contacted.new
     the_contacted.user_id = @current_user.id
     the_contacted.other_user_id = params.fetch("query_other_user_id")
@@ -44,8 +44,8 @@ class ContactedsController < ApplicationController
 
       # Craft your email as a Hash literal with these four keys
       email_info = {
-        :from => @current_user.email,
-        :to => other_email,  # Put your own email address here if you want to see it in action
+        :from => @current_user.email, #"beatricek222@gmail.com",
+        :to => other_email,  # "beatricek222@gmail.com",
         :subject => subject,
         :text => email_body,
       }
