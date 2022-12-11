@@ -7,6 +7,11 @@ class ContactedsController < ApplicationController
     render({ :template => "contacteds/index.html.erb" })
   end
 
+  def click
+    @other_user_id = params["query_other_user_id"]
+    render({ :template => "contacteds/form.html.erb" })
+  end
+
   def show
     the_id = params.fetch("path_id")
 
@@ -21,10 +26,14 @@ class ContactedsController < ApplicationController
     the_contacted = Contacted.new
     the_contacted.user_id = @current_user.id
     the_contacted.other_user_id = params.fetch("query_other_user_id")
+    other_email = User.where({ :id => the_contacted.other_user_id })[0].email
+
+    subject = params.fetch("query_subject")
+    email_body = params.fetch("query_email")
 
     if the_contacted.valid?
       the_contacted.save
-      redirect_to("/contacteds", { :notice => "Contacted created successfully." })
+      redirect_to("/contacteds", { :notice => "Contacted successfully." })
     else
       redirect_to("/contacteds", { :alert => the_contacted.errors.full_messages.to_sentence })
     end

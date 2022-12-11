@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # Routes for the Contacted resource:
 
   # CREATE
+  post("/click_contacted", { :controller => "contacteds", :action => "click" })
+
   post("/insert_contacted", { :controller => "contacteds", :action => "create" })
 
   # READ

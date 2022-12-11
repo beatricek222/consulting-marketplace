@@ -77,12 +77,17 @@
     <%the_contacted = current_user_contacteds[0]%>
 
     <%if the_contacted == nil %>
-    <form action="/insert_contacted" method="post">
+    
+    <form action="/click_contacted" method="post">
     <input type="hidden" name="query_other_user_id" value="<%=a_user.id%>">
-    <button class="btn btn-info">Contact!</button>
+
+    <button id="contact-btn" class="btn btn-info">Contact!</button>
+
     </form>
+
+
     <%else%>
-      <div class="btn" style="btn-outline-info">Contacted</div>
+      <div class="btn btn-outline-info">Contacted</div>
     <%end%>
         </td>
       </tr>
