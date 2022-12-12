@@ -44,10 +44,10 @@ class ContactedsController < ApplicationController
 
       # Craft your email as a Hash literal with these four keys
       email_info = {
-        :from => @current_user.email, #"beatricek222@gmail.com",
-        :to => other_email,  # "beatricek222@gmail.com",
+        :from => "umbrella@appdevproject.com", # @current_user.email, #"beatricek222@gmail.com",
+        :to => other_email, #"beatricek222@gmail.com", #other_email,
         :subject => subject,
-        :text => email_body,
+        :text => "From: #{@current_user.email} \n #{email_body}",
       }
 
       # Send your email!
