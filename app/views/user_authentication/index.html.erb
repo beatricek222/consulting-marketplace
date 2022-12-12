@@ -14,10 +14,14 @@
           Name
         </th>
 
-        <%if @current_user.role_id == 2 %>
-  <th>Role</th>
-<%else %>
+        <%if @current_user.role_id == 1%>
   <th>Company Name</th>
+<%end%>
+
+      <%if @current_user.role_id == 2 %>
+  <th>Areas of Expertise</th>
+<%else %>
+  <th>Areas of Interest</th>
 <%end%>
 
         <th>
@@ -39,22 +43,24 @@
       </thead>
       <tbody>
       <% @list_of_users.each do |a_user| %>
-      <tr>
-        <td>
-          <%= a_user.full_name %>
-        </td>
+      <tr data-link="/marketplace/<%= a_user.id %>">
+        <td style="font-weight:bold"><p>     <%= a_user.full_name %></p></td>
 
-<%if @current_user.role_id == 2 %>
-  <td><%= a_user.role.title %></td>
-<%else %>
+<%if @current_user.role_id == 1 %>
   <td><%= a_user.company_name %> </td>
 <%end%>
+
+        <td>
+        <% a_user.user_interests.each do |interest| %>
+          <p class="btn btn-primary"> <%=interest.expertise.name%> </p>
+        <%end%>
+        </td>
 
         <td>
           <%= a_user.description %>
         </td>
         <td>
-          <a class="btn btn-outline-success" href="/marketplace/<%= a_user.id %>">
+          <a class="btn btn-success" href="/marketplace/<%= a_user.id %>">
             Show details
           </a>
         </td>
@@ -102,3 +108,14 @@
     </table>
   </div>
 </div>
+
+<script>
+$("tr[data-link]").click(function () {
+    $.ajax({
+        url: this.getAttribute('data-link'),
+        dataType: "script",
+        type: "GET"
+    });
+    event.preventDefault();
+});
+</script>
