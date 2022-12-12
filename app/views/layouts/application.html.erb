@@ -31,9 +31,15 @@
     -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarLight" style="text-align: center;">
       <ul class="navbar-nav me-auto mb-2 mb-xl-0 justify-content-center">
+      <%if @current_user != nil && @current_user.role_id == 2%>
       <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/marketplace">All Businesses</a>
+          <a class="nav-link active" aria-current="page" href="/marketplace" style="font-weight: bold">All Consultants</a>
         </li>
+      <%else%>
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/marketplace" style="font-weight: bold">All Businesses</a>
+        </li>
+      <%end%>
       <%if session[:user_id] == nil %>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/user_sign_up">Sign Up</a>
