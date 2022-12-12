@@ -5,6 +5,28 @@
   <h1>List of all businesses</h1>
 <%end%>
 
+<%= search_form_for(@q, url: "/marketplace", method: :get) do |f| %>
+  <p>Narrow results:</p>
+
+  <div>
+    <%= f.label :full_name_cont, "Name containing" %>
+    <%= f.text_field :full_name_cont, :placeholder => "Enter a few characters" %>
+  </div>
+
+  <div>
+  <% Expertise.all.each do |expertise| %>
+    <label>
+      <%= check_box_tag('q[user_interests_expertise_id_eq_any][]', expertise.id, (true if @q.user_interests_expertise_id_eq_any.try(:include?, expertise.id))) %>
+      <%= expertise.name %>
+    </label>
+  <% end %>
+</div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/marketplace">Clear filters</a>
+<% end %>
+
 <div>
   <div>
     <table class="table table-hover table-striped" style="border-radius: 30px">

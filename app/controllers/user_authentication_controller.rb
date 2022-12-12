@@ -4,9 +4,15 @@ class UserAuthenticationController < ApplicationController
 
   def index
     if @current_user.role_id == 1
-      @list_of_users = User.where({ :role_id => 2 })
+      @users = User.where({ :role_id => 2 })
+      #@q = User.where({ :role_id => 2 }).ransack(params[:q])
+      @q = User.ransack(params[:q])
+      @list_of_users = @q.result(:distinct => true).includes(:user_interests)
     else
-      @list_of_users = User.where({ :role_id => 1 })
+      @users = User.where({ :role_id => 1 })
+     # @q = User.where({ :role_id => 1 }).ransack(params[:q])
+     @q = User.ransack(params[:q])
+      @list_of_users = @q.result(:distinct => true).includes(:user_interests)
     end
     render({ :template => "user_authentication/index.html.erb" })
   end
