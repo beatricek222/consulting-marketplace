@@ -17,9 +17,15 @@
           Name
         </th>
 
-        <th>
-          Role
-        </th>
+<%if @current_user.role_id == 1%>
+  <th>Company Name</th>
+<%end%>
+
+      <%if @current_user.role_id == 2 %>
+  <th>Areas of Expertise</th>
+<%else %>
+  <th>Areas of Interest</th>
+<%end%>
 
         <th>
         Description
@@ -38,12 +44,18 @@
       <tbody>
       <% @list_of_contacteds.each do |a_favorite| %>
       <tr>
-        <td>
+        <td style="font-weight:bold">
           <%=  a_favorite.user.full_name%> <!-- User.where(a_favorite.other_user_id == :id)[0].full_name -->
         </td>
 
+<%if @current_user.role_id == 1 %>
+  <td><%= a_favorite.user.company_name %> </td>
+<%end%>
+
         <td>
-          <%= a_favorite.user.role.title%>
+        <% a_favorite.user.user_interests.each do |interest| %>
+          <p class="btn btn-primary"> <%=interest.expertise.name%> </p>
+        <%end%>
         </td>
 
         <td>
@@ -51,7 +63,7 @@
         </td>
 
         <td>
-          <a class="btn btn-outline-success" href="/marketplace/<%= a_favorite.id %>">
+          <a class="btn btn-success" href="/marketplace/<%= a_favorite.id %>">
             Show details
           </a>
         </td>

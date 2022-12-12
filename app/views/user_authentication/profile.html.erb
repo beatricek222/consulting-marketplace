@@ -51,7 +51,7 @@
       </dt>
       <dd>
         <% @current_user.user_interests.each do |interest| %>
-          <li> <%=interest.expertise.name%> </li>
+          <li class="btn btn-primary"> <%=interest.expertise.name%> </li>
         <%end%>
       </dd>
     </dl>

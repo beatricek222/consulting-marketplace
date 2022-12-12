@@ -44,7 +44,7 @@
       <tbody>
       <% @list_of_users.each do |a_user| %>
       <tr data-link="/marketplace/<%= a_user.id %>">
-        <td style="font-weight:bold"><p>     <%= a_user.full_name %></p></td>
+        <td style="font-weight:bold"><p> <%= a_user.full_name %></p></td>
 
 <%if @current_user.role_id == 1 %>
   <td><%= a_user.company_name %> </td>
@@ -110,9 +110,23 @@
 </div>
 
 <script>
+//$(document).on("click", "#table-id tr", function() {
+//  var link  = $(this).data("href")
+//  $.ajax({
+//    url: link,
+//    type: "GET"
+//  });
+//});
+
+//$("tr[data-link]").on("click", function() {
+//    window.location = $(this).parent().data("www.google.com");
+//  });
+
+
 $("tr[data-link]").click(function () {
+  //var link = $(this).data("www.google.com")
     $.ajax({
-        url: this.getAttribute('data-link'),
+        url: "www.google.com", //link, //$(this).getAttribute('data-link'),
         dataType: "script",
         type: "GET"
     });
