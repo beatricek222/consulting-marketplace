@@ -47,9 +47,9 @@
 
     <dl>
 <%if @current_user.role_id == 2 %>
-  <dt>Areas of Expertise</dt>
+  <dt class="mb-2">Areas of Expertise</dt>
 <%else %>
-  <dt>Areas of Interest</dt>
+  <dt class="mb-2">Areas of Interest</dt>
 <%end%>
       <dd>
         <% @current_user.user_interests.each do |interest| %>
