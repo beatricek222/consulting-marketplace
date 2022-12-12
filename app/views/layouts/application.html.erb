@@ -22,18 +22,18 @@
   <body>
   <div class="container py-3 justify-content-center">
 <nav class="navbar navbar-expand-xl navbar-light justify-content-center" style="background-color: #e3f2fd; border-radius: 30px; text-align: center; justify-content: space-around;">
-  <div class="container-fluid" style="text-align: center; justify-content: space-around;">
+  <div class="container-fluid text-center" style="text-align: center; justify-content: space-around;">
     <!-- <a class="navbar-brand" style="text-align: center;" href="/marketplace">All Businesses</a> -->
     <!-- 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight" aria-controls="navbarLight" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarLight" style="text-align: center;">
-      <ul class="navbar-nav me-auto mb-2 mb-xl-0 justify-content-center">
+    <div class="collapse navbar-collapse text-center" id="navbarLight">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0 text-center">
       <%if @current_user != nil && @current_user.role_id == 2%>
-      <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/marketplace" style="font-weight: bold">All Consultants</a>
+      <li class="nav-item text-center">
+          <a class="nav-link active text-center" aria-current="page" href="/marketplace" style="font-weight: bold">All Consultants</a>
         </li>
       <%else%>
       <li class="nav-item">
