@@ -46,9 +46,11 @@
     </dl>
 
     <dl>
-      <dt>
-        Areas of Expertise
-      </dt>
+<%if @current_user.role_id == 2 %>
+  <dt>Areas of Expertise</dt>
+<%else %>
+  <dt>Areas of Interest</dt>
+<%end%>
       <dd>
         <% @current_user.user_interests.each do |interest| %>
           <li class="btn btn-primary"> <%=interest.expertise.name%> </li>
