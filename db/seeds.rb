@@ -8,13 +8,13 @@
 
 titles = ["Consultant", "Business"]
 
-title.each do |title|
+titles.each do |title|
   role = Role.new
   role.title = title
   role.save
 end
 
-descriptions = ["1-2 hours / week", "3-5 hours / week", "> 5 hours / week"]
+descriptions = ["1-2 hours / week", "3-5 hours / week", ">5 hours / week"]
 
 descriptions.each do |description|
   time_availability = TimeAvailability.new
