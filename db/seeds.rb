@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+titles = ["Consultant", "Business"]
+
+title.each do |title|
+  role = Role.new
+  role.title = title
+  role.save
+end
+
+descriptions = ["1-2 hours / week", "3-5 hours / week", "> 5 hours / week"]
+
+descriptions.each do |description|
+  time_availability = TimeAvailability.new
+  time_availability.description = description
+  time_availability.save
+end
+
+names = ["Food", "Supply Chain", "Marketing", "Operations", "Healthcare", "Software", "Finance", "Logistics"]
+
+names.each do |name|
+  expertise = Expertise.new
+  expertise.name = name
+  expertise.save
+end
